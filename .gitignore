@@ -1,0 +1,36 @@
+# Fichiers générés par Ruby
+*.gem
+*.rbc
+.bundle/
+.config/
+coverage/
+log/*
+tmp/*
+
+# Fichiers de dépendances (généralement gérés par Bundler)
+Gemfile.lock
+vendor/
+
+# Fichiers de tests générés
+*.swp
+*.swo
+*.bak
+
+# IDEs et éditeurs de texte
+.vscode/
+.idea/
+.project/
+
+# Fichiers système
+.DS_Store        # macOS
+Thumbs.db         # Windows
+
+# Fichiers RubyMine
+/.idea/
+
+# Fichiers générés par le compilateur Ruby (si applicable)
+*.o
+*.so
+
+# Fichiers locaux de configuration
+*.local
