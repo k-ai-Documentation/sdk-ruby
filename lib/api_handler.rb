@@ -26,7 +26,7 @@ module SdkRuby
       if @credentials.host
         @credentials.host
       else
-        "https://#{@credentials.organization_id}.url.com/#{@credentials.instance_id}/"
+        "https://#{@credentials.organization_id}.kai-studio.ai/#{@credentials.instance_id}/"
       end
     end
 
