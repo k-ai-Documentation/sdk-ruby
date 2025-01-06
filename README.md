@@ -12,18 +12,18 @@ a. Ajouter la gem dans le Gemfile dans votre projet
 
 ```bash
 gem 'sdk_ruby', git: 'https://github.com/toncompte/sdk_ruby.git'
-```bash
+```
 
 ou si vous utilisez SSH :
 ```bash
 gem 'sdk_ruby', git: 'git@github.com:toncompte/sdk_ruby.git'
-```bash
+```
 
 b. commande
 ```bash
 cd sdk-ruby
 bundle install
-```bash
+```
 
 Le SDK sera installé dans le répertoire vendor/bundle ou dans les gems système, selon la configuration.
 
@@ -47,4 +47,4 @@ puts sdk.hello
 # Exemple d'appel à une API via le SDK
 response = sdk.api_handler.get('/api/v1/resource', { param1: 'value1' })
 puts response
-```bash
+```
