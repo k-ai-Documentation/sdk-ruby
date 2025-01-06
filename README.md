@@ -11,12 +11,12 @@ Pour utiliser ce SDK, clonez ce dépôt et utilisez-le dans votre projet Ruby :
 a. Ajouter la gem dans le Gemfile dans votre projet
 
 ```bash
-gem 'sdk_ruby', git: 'https://github.com/toncompte/sdk_ruby.git'
+gem 'sdk_ruby', git: 'https://github.com/nchevalet-KAI/sdk_ruby.git'
 ```
 
 ou si vous utilisez SSH :
 ```bash
-gem 'sdk_ruby', git: 'git@github.com:toncompte/sdk_ruby.git'
+gem 'sdk_ruby', git: 'git@github.com:nchevalet-KAI/sdk_ruby.git'
 ```
 
 b. commande
@@ -31,7 +31,6 @@ Le SDK sera installé dans le répertoire vendor/bundle ou dans les gems systèm
 c. Utilisation du SDK dans le projet tiers
 Une fois la gem installée, vous pouvez utiliser le SDK comme avec une gem Ruby classique. Par exemple, dans un fichier main.rb de votre projet, l'utiliser ainsi :
 
-Copier le code
 ```bash
 require 'sdk_ruby'
 
