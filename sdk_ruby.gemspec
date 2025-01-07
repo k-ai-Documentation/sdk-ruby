@@ -14,6 +14,7 @@ Gem::Specification.new do |spec|
   
     spec.add_dependency "httparty"  # Ajout de la dépendance HTTParty
     spec.add_dependency "httpx"
+    spec.add_dependency "async"
     spec.add_dependency "json", "~> 2.5"
     spec.add_dependency "dotenv", "~> 2.7"
   
