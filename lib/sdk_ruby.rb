@@ -24,7 +24,7 @@ module SdkRuby
           # @semantic_graph = SemanticGraph.new(@api_handler)
       end
       def self.hello
-        "Hello from MyRubySDK!"
+        "Welcome on KAI's Ruby SDK!"
       end
     end
   end

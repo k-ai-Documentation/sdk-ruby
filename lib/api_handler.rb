@@ -7,7 +7,7 @@ module SdkRuby
     def initialize(credentials)
       @credentials = credentials
       @base_url = build_base_url
-      @headers = { 'api-key' => @credentials.api_key }
+      @headers = build_headers
     end
 
     def get(endpoint, params = {})
@@ -20,13 +20,44 @@ module SdkRuby
       handle_response(response)
     end
 
+    def headers
+      @headers
+    end
+    def base_url
+      @base_url
+    end
+
     private
 
+    def build_headers
+      headers = { 'api-key' => @credentials.api_key }
+
+      if @credentials.organization_id
+        headers['organization-id'] = @credentials.organization_id
+      end
+
+      if @credentials.instance_id
+        headers['instance-id'] = @credentials.instance_id
+      end
+
+      # Si un hôte personnalisé est spécifié, ajouter dans le header aussi
+      if @credentials.host && !@credentials.host.empty?
+        headers['host'] = @credentials.host
+      end
+
+      headers
+    end
+
     def build_base_url
-      if @credentials.host
+      # Vérifier si le host est défini et non vide
+      if @credentials.host && !@credentials.host.empty?
         @credentials.host
+      elsif @credentials.organization_id && @credentials.instance_id
+        # Si @credentials.host n'est pas défini, utiliser la méthode de fallback
+        "https://api.kai-studio.ai"
       else
-        "https://#{@credentials.organization_id}.kai-studio.ai/#{@credentials.instance_id}/"
+        # Si aucune donnée n'est fournie, lever une exception pour prévenir de l'erreur
+        raise "Erreur: Host, organization_id ou instance_id sont manquants dans les credentials."
       end
     end
 
