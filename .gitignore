@@ -34,4 +34,4 @@ Thumbs.db         # Windows
 
 # Fichiers locaux de configuration
 *.local
-*.env
+.env
