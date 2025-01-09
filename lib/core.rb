@@ -1,5 +1,5 @@
 require 'httpx'
-require 'async'
+# require 'async'
 
 module SdkRuby
     class Core
@@ -43,14 +43,23 @@ module SdkRuby
             nil
         end
 
-        def download_file(file_id)
-            p "Launching file download..."
-            response = httpx_post("/api/orchestrator/files/download", { json: { id: file_id } })
+        def list_docs
+            p "List all indexed documents..."
+            response = httpx_post("/api/orchestrator/list-docs")
             handle_response(response)
         rescue => e
             puts "An error has occurred while processing your query: #{e.message}"
             nil
         end
+
+        # def download_file(file_id)
+        #     p "Launching file download..."
+        #     response = httpx_post("/api/orchestrator/files/download", { json: { id: file_id } })
+        #     handle_response(response)
+        # rescue => e
+        #     puts "An error has occurred while processing your query: #{e.message}"
+        #     nil
+        # end
 
         def differential_indexation
             p "Launching differential indexation..."
@@ -61,6 +70,33 @@ module SdkRuby
             nil
         end
 
+        def global_health
+            p "Launching global server running stats..."
+            response = httpx_post("/global-health")
+            handle_response(response)
+        rescue => e
+            puts "An error has occurred while processing your query: #{e.message}"
+            nil
+        end
+
+        def health
+            p "Launching running status of the instance and api..."
+            response = httpx_post("/health")
+            handle_response(response)
+        rescue => e
+            puts "An error has occurred while processing your query: #{e.message}"
+            nil
+        end
+
+        # Obtenir la version de l'API
+        def version
+            p "Get version of service kai-api..."
+            response = httpx_post("/version", {})
+            handle_response(response)
+        rescue => e
+            puts "An error has occurred while processing your query: #{e.message}"
+            nil
+        end
 
         private
         # def httpx_post(endpoint) #old version

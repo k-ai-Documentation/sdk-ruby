@@ -9,17 +9,7 @@ module SdkRuby
         # Obtenir des informations sur les conflits
         def get_conflict_information(limit = 20, offset = 0)
             p "Launch get_conflict_information..."
-            response = httpx_post("/api/audit/conflict-information", { json: { limit: limit, offset: offset } })
-            handle_response(response)
-        rescue => e
-            puts "An error has occurred while processing your query: #{e.message}"
-            nil
-        end
-
-        # Obtenir des informations sur les doublons
-        def get_duplicated_information(limit = 20, offset = 0)
-            p "Launch get_duplicated_information..."
-            response = httpx_post("/api/audit/duplicated-information", { json: { limit: limit, offset: offset } })
+            response = httpx_post("/api/audit/conflict-information", { limit: limit, offset: offset })
             handle_response(response)
         rescue => e
             puts "An error has occurred while processing your query: #{e.message}"
@@ -29,7 +19,17 @@ module SdkRuby
         # Mettre un conflit comme géré
         def set_conflict_managed(information_id)
             p "Launch set_conflict_managed..."
-            response = httpx_post("/api/audit/conflict-information/set-managed", { json: { id: information_id } })
+            response = httpx_post("/api/audit/conflict-information/set-managed", { id: information_id })
+            handle_response(response)
+        rescue => e
+            puts "An error has occurred while processing your query: #{e.message}"
+            nil
+        end
+
+        # Obtenir des informations sur les doublons
+        def get_duplicated_information(limit = 20, offset = 0)
+            p "Launch get_duplicated_information..."
+            response = httpx_post("/api/audit/duplicated-information", { limit: limit, offset: offset })
             handle_response(response)
         rescue => e
             puts "An error has occurred while processing your query: #{e.message}"
@@ -39,7 +39,7 @@ module SdkRuby
         # Mettre un doublon comme géré
         def set_duplicated_information_managed(information_id)
             p "Launch set_duplicated_information_managed..."
-            response = httpx_post("/api/audit/duplicated-information/set-managed", { json: { id: information_id } })
+            response = httpx_post("/api/audit/duplicated-information/set-managed", { id: information_id })
             handle_response(response)
         rescue => e
             puts "An error has occurred while processing your query: #{e.message}"
@@ -49,7 +49,7 @@ module SdkRuby
         # Obtenir les documents à gérer
         def get_documents_to_manage(limit = 20, offset = 0)
             p "Launch get_documents_to_manage..."
-            response = httpx_post("/api/audit/documents-to-manage", { json: { limit: limit, offset: offset } })
+            response = httpx_post("/api/audit/documents-to-manage", { limit: limit, offset: offset })
             handle_response(response)
         rescue => e
             puts "An error has occurred while processing your query: #{e.message}"
@@ -59,7 +59,7 @@ module SdkRuby
         # Obtenir les sujets manquants
         def get_missing_subjects(limit = 20, offset = 0)
             p "Launch get_missing_subjects..."
-            response = httpx_post("/api/audit/missing-subjects", { json: { limit: limit, offset: offset } })
+            response = httpx_post("/api/audit/missing-subjects", { limit: limit, offset: offset })
             handle_response(response)
         rescue => e
             puts "An error has occurred while processing your query: #{e.message}"

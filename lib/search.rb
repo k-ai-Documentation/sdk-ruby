@@ -9,13 +9,13 @@ module SdkRuby
         # Effectuer une requête de recherche
         def query(query, user, impersonate, multi_documents, need_following_questions)
             p "Launch search query..."
-            response = httpx_post("/api/search/query", { json: {
+            response = httpx_post("/api/search/query", {
                 "query" => query,
                 "user" => user,
                 "impersonate" => impersonate,
                 "multiDocuments" => multi_documents,
                 "needFollowingQuestions" => need_following_questions
-            } })
+            })
             handle_response(response)
         rescue => e
             puts "An error has occurred while processing your query: #{e.message}"
@@ -25,7 +25,7 @@ module SdkRuby
         # Obtenir la signature d'un document
         def get_doc_signature(doc_id)
             p "Launch get_doc_signature..."
-            response = httpx_post("/api/search/doc", { json: { "id" => doc_id } })
+            response = httpx_post("/api/search/doc", { "id" => doc_id } )
             handle_response(response)
         rescue => e
             puts "An error has occurred while processing your query: #{e.message}"
@@ -35,7 +35,7 @@ module SdkRuby
         # Obtenir les documents par ID
         def get_doc_ids(doc_ids)
             p "Launch get_doc_ids..."
-            response = httpx_post("/api/search/docs", { json: { "docsIds" => doc_ids } })
+            response = httpx_post("/api/search/docs", { "docsIds" => doc_ids })
             handle_response(response)
         rescue => e
             puts "An error has occurred while processing your query: #{e.message}"
@@ -45,7 +45,7 @@ module SdkRuby
         # Compter les requêtes effectuées
         def count_done_requests
             p "Launch count_done_requests..."
-            p response = httpx_post("/api/search/stats/count-search", {})
+            response = httpx_post("/api/search/stats/count-search", {})
             handle_response(response)
         rescue => e
             puts "An error has occurred while processing your query: #{e.message}"
@@ -65,7 +65,7 @@ module SdkRuby
         # Obtenir les requêtes API avec un certain limite et offset
         def get_requests_to_api(limit, offset)
             p "Launch get_requests_to_api..."
-            response = httpx_post("/api/search/stats/list-search", { json: { "limit" => limit, "offset" => offset } })
+            response = httpx_post("/api/search/stats/list-search", { "limit" => limit, "offset" => offset })
             handle_response(response)
         rescue => e
             puts "An error has occurred while processing your query: #{e.message}"
@@ -75,22 +75,13 @@ module SdkRuby
         # Identifier un document spécifique à partir d'une conversation
         def identify_specific_document(conversation)
             p "Launch identify_specific_document..."
-            response = httpx_post("/api/search/identify-specific-document", { json: { "conversation" => conversation } })
+            response = httpx_post("/api/search/identify-specific-document", { "conversation" => conversation })
             handle_response(response)
         rescue => e
             puts "An error has occurred while processing your query: #{e.message}"
             nil
         end
 
-        # Obtenir la version de l'API
-        def get_version
-            p "Launch get_version..."
-            response = httpx_post("/version", {})
-            handle_response(response)
-        rescue => e
-            puts "An error has occurred while processing your query: #{e.message}"
-            nil
-        end
 
         private
 
@@ -99,7 +90,7 @@ module SdkRuby
             url = "#{@api_handler.base_url}#{endpoint}"
 
             # Effectuer la requête HTTP POST de manière synchrone
-            response = HTTPX.post(url, headers: @api_handler.headers, json: payload)
+            response = HTTPX.post(url, headers: @api_handler.headers, form: payload)
             response
         end
 
