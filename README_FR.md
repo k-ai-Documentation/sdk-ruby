@@ -31,8 +31,8 @@ bundle install
 Le SDK sera installé dans le répertoire vendor/bundle ou dans les gems système, selon la configuration.
 
 
-## UTILISATION
-### Utilisation du SDK dans votre projet
+## Utilisation
+### Intégrer le SDK dans votre projet
 Une fois la gem installée, vous pouvez utiliser le SDK comme avec une gem Ruby classique. Par exemple, dans un fichier main.rb de votre projet, l'utiliser ainsi :
 
 ```bash

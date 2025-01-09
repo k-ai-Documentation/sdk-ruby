@@ -7,7 +7,7 @@ This SDK allows you to interact with the KAI API. It is written in Ruby and faci
 - Functions related to the semantic graph data management
 
 For more information:
-Visitez notre site : https://k-ai.ai/
+Visit our website : https://k-ai.ai/
 
 ## Installation
 To use this SDK, clone this repository and use it in your Ruby project:
@@ -30,7 +30,7 @@ bundle install
 
 The SDK will be installed in the vendor/bundle directory or in the system gems, depending on the configuration.
 
-## USAGE
+## Usage
 ### Using the SDK in your project
 Once the gem is installed, you can use the SDK as with a regular Ruby gem. For example, in a main.rb file of your project, use it like this:
 
