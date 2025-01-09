@@ -1,4 +1,4 @@
-require 'dotenv/load' # Charger les variables d'environnement
+require 'dotenv/load' # Charger les variables d'environnement dans le fichier .ENV
 require_relative 'lib/sdk_ruby'
 
 # Initialiser les credentials et l'instance KS
