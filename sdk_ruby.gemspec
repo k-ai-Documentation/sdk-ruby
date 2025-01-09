@@ -1,3 +1,5 @@
+require_relative "lib/version"
+
 Gem::Specification.new do |spec|
     spec.name          = "kai_sdk_ruby"
     spec.version       = SdkRuby::VERSION
