@@ -15,12 +15,12 @@ To use this SDK, clone this repository and use it in your Ruby project:
 Add the gem to the Gemfile in your project
 
 ```bash
-gem 'sdk_ruby', git: 'https://github.com/nchevalet-KAI/sdk_ruby.git'
+gem 'sdk_ruby', git: 'https://github.com/nchevalet-KAI/sdk-ruby.git'
 ```
 
 or if you use SSH :
 ```bash
-gem 'sdk_ruby', git: 'git@github.com:nchevalet-KAI/sdk_ruby.git'
+gem 'sdk_ruby', git: 'git@github.com:nchevalet-KAI/sdk-ruby.git'
 ```
 
 Then

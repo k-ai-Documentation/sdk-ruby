@@ -16,7 +16,7 @@ api_handler = SdkRuby::ApiHandler.new(credentials)
 
 # TESTS ET EXAMPLES
 # Tester la méthode hello
-puts SdkRuby::KS.hello
+puts SdkRuby::KS.hello + SdkRuby::VERSION
 
 # Appel à la méthode count_documents dans Core pour tester
 # core = SdkRuby::Core.new(api_handler)
