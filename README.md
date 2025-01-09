@@ -1,36 +1,38 @@
-# Mon SDK Ruby
+# KAI SDK Ruby
 
-Ce SDK permet d'interagir avec l'API KAI. Il est écrit en Ruby et facilite les opérations suivantes avec l'API de KAI :
-- Fonctions liées au module Search
-- Fonctions liées au module Audit
-- Fonctions liées à l'instance global (Core)
-- Fonctions liées à la gestion des données du graphe sémantique
+This SDK allows you to interact with the KAI API. It is written in Ruby and facilitates the following operations with the KAI API:
+- Functions related to the Search module
+- Functions related to the Audit module
+- Functions related to the global instance (Core)
+- Functions related to the semantic graph data management
+
+For more information:
+Visitez notre site : https://k-ai.ai/
 
 ## Installation
-Pour utiliser ce SDK, clonez ce dépôt et utilisez-le dans votre projet Ruby :
+To use this SDK, clone this repository and use it in your Ruby project:
 
-Ajouter la gem dans le Gemfile dans votre projet
+Add the gem to the Gemfile in your project
 
 ```bash
 gem 'sdk_ruby', git: 'https://github.com/nchevalet-KAI/sdk_ruby.git'
 ```
 
-ou si vous utilisez SSH :
+or if you use SSH :
 ```bash
 gem 'sdk_ruby', git: 'git@github.com:nchevalet-KAI/sdk_ruby.git'
 ```
 
-Puis
+Then
 ```bash
 bundle install
 ```
 
-Le SDK sera installé dans le répertoire vendor/bundle ou dans les gems système, selon la configuration.
+The SDK will be installed in the vendor/bundle directory or in the system gems, depending on the configuration.
 
-
-## UTILISATION
-### Utilisation du SDK dans votre projet
-Une fois la gem installée, vous pouvez utiliser le SDK comme avec une gem Ruby classique. Par exemple, dans un fichier main.rb de votre projet, l'utiliser ainsi :
+## USAGE
+### Using the SDK in your project
+Once the gem is installed, you can use the SDK as with a regular Ruby gem. For example, in a main.rb file of your project, use it like this:
 
 ```bash
 require 'sdk_ruby'
@@ -52,4 +54,4 @@ audit.get_conflict_information(limit = 5, offset = 0)
 ```
 
 ### Examples
-Le fichier example.rb vous fournit une liste complète des fonctions disponibles et leur utilisation.
+The example.rb file provides you with a complete list of available functions and their usage.
