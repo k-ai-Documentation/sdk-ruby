@@ -1,5 +1,5 @@
 require 'dotenv/load' # Charger les variables d'environnement dans le fichier .ENV
-require_relative 'lib/sdk_ruby'
+require_relative 'lib/kai_sdk_ruby'
 
 # Initialiser les credentials et l'instance KS
 # Mettre ses identifiants dans un fichier .env
