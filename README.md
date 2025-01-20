@@ -15,7 +15,7 @@ To use this SDK, clone this repository and use it in your Ruby project:
 Add the gem to the Gemfile in your project
 
 ```bash
-gem 'sdk_ruby', git: 'https://github.com/nchevalet-KAI/sdk-ruby.git'
+gem 'sdk_ruby', git: 'https://github.com/k-ai-Documentation/sdk-ruby'
 ```
 
 or if you use SSH :

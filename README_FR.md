@@ -15,12 +15,12 @@ Pour utiliser ce SDK, clonez ce dépôt et utilisez-le dans votre projet Ruby :
 Ajouter la gem dans le Gemfile dans votre projet
 
 ```bash
-gem 'sdk_ruby', git: 'https://github.com/nchevalet-KAI/sdk_ruby.git'
+gem 'sdk_ruby', git: 'https://github.com/k-ai-Documentation/sdk-ruby'
 ```
 
 ou si vous utilisez SSH :
 ```bash
-gem 'sdk_ruby', git: 'git@github.com:nchevalet-KAI/sdk_ruby.git'
+gem 'sdk_ruby', git: 'git@github.com:k-ai-Documentation/sdk-ruby.git'
 ```
 
 Puis
