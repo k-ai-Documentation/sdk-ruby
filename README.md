@@ -37,17 +37,17 @@ Once the gem is installed, you can use the SDK as with a regular Ruby gem. For e
 ```bash
 require 'sdk_ruby'
 
-# Initialiser les credentials
+# Initialize credentials
 credentials = SdkRuby::KSCredentials.new("API_KEY", "Organization_ID", "Instance_ID")
 
-# Création de l'instance de ApiHandler
+# Create the ApiHandler instance
 api_handler = SdkRuby::ApiHandler.new(credentials)
 
-# Tester la fonctionnalité "Hello" du SDK
+# Test "Hello" method from the SDK
 p SdkRuby::KS.hello
-# cela affichera "Welcome on KAI's Ruby SDK!""
+# It should print "Welcome on KAI's Ruby SDK!""
 
-# Exemple d'appel à une fonction du module Audit
+# Example : How to call a method in the Audit module
 audit = SdkRuby::Audit.new(api_handler)
 audit.get_conflict_information(limit = 5, offset = 0)
 

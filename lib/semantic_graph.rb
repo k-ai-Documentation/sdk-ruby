@@ -6,7 +6,7 @@ module SdkRuby
             @api_handler = api_handler
         end
 
-        # Obtenir des informations sur les nodes
+        # Get information about nodes
         def get_nodes(limit = 20, offset = 0)
             p "Launch list of relationships between nodes..."
             response = httpx_post("/api/semantic-graph/nodes", { limit: limit, offset: offset })
@@ -16,7 +16,6 @@ module SdkRuby
             nil
         end
 
-        # Mettre un conflit comme géré
         def get_linked_nodes(information_id)
             p "Launch get linked nodes to an id..."
             response = httpx_post("/api/semantic-graph/linked-nodes", { id: information_id })
@@ -26,7 +25,7 @@ module SdkRuby
             nil
         end
 
-        # Obtenir des informations sur les nodes ayant le nom exact donné
+        # Get information about nodes with the given exact name
         def get_nodes_by_label(label)
             p "Launch get node by label..."
             response = httpx_post("/api/semantic-graph/nodes-by-label", { label: label })
@@ -36,7 +35,7 @@ module SdkRuby
             nil
         end
 
-        # Obtenir des informations sur les nodes à partir d'un mot
+        # Get node information from a word
         def identify_nodes(query)
             p "Search node from a query..."
             response = httpx_post("/api/semantic-graph/identify-nodes", { query: query })
@@ -48,16 +47,12 @@ module SdkRuby
 
         private
 
-        # Méthode générique pour envoyer les requêtes POST
         def httpx_post(endpoint, payload)
             url = "#{@api_handler.base_url}#{endpoint}"
-
-            # Effectuer la requête HTTP POST de manière synchrone
             response = HTTPX.post(url, headers: @api_handler.headers, json: payload)
             response
         end
 
-        # Gérer la réponse de l'API
         def handle_response(response)
             if response.status == 200
                 response.json

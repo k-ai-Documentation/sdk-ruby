@@ -6,7 +6,7 @@ module SdkRuby
             @api_handler = api_handler
         end
 
-        # Obtenir des informations sur les conflits
+        # Obtain information on conflicts
         def get_conflict_information(limit = 20, offset = 0)
             p "Launch get_conflict_information..."
             response = httpx_post("/api/audit/conflict-information", { limit: limit, offset: offset })
@@ -16,7 +16,7 @@ module SdkRuby
             nil
         end
 
-        # Mettre un conflit comme géré
+        # Put a conflict as managed
         def set_conflict_managed(information_id)
             p "Launch set_conflict_managed..."
             response = httpx_post("/api/audit/conflict-information/set-managed", { id: information_id })
@@ -26,7 +26,7 @@ module SdkRuby
             nil
         end
 
-        # Obtenir des informations sur les doublons
+        # Get information about duplicates
         def get_duplicated_information(limit = 20, offset = 0)
             p "Launch get_duplicated_information..."
             response = httpx_post("/api/audit/duplicated-information", { limit: limit, offset: offset })
@@ -36,7 +36,7 @@ module SdkRuby
             nil
         end
 
-        # Mettre un doublon comme géré
+        # Set a duplicate as managed
         def set_duplicated_information_managed(information_id)
             p "Launch set_duplicated_information_managed..."
             response = httpx_post("/api/audit/duplicated-information/set-managed", { id: information_id })
@@ -46,7 +46,7 @@ module SdkRuby
             nil
         end
 
-        # Obtenir les documents à gérer
+        # Obtain the documents'list to be managed
         def get_documents_to_manage(limit = 20, offset = 0)
             p "Launch get_documents_to_manage..."
             response = httpx_post("/api/audit/documents-to-manage", { limit: limit, offset: offset })
@@ -56,7 +56,7 @@ module SdkRuby
             nil
         end
 
-        # Obtenir les sujets manquants
+        # Get the missing topics from previous queries
         def get_missing_subjects(limit = 20, offset = 0)
             p "Launch get_missing_subjects..."
             response = httpx_post("/api/audit/missing-subjects", { limit: limit, offset: offset })
@@ -68,16 +68,12 @@ module SdkRuby
 
         private
 
-        # Méthode générique pour envoyer les requêtes POST
         def httpx_post(endpoint, payload)
             url = "#{@api_handler.base_url}#{endpoint}"
-
-            # Effectuer la requête HTTP POST de manière synchrone
             response = HTTPX.post(url, headers: @api_handler.headers, json: payload)
             response
         end
 
-        # Gérer la réponse de l'API
         def handle_response(response)
             if response.status == 200
                 response.json

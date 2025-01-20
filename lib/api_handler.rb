@@ -40,7 +40,7 @@ module SdkRuby
         headers['instance-id'] = @credentials.instance_id
       end
 
-      # Si un hôte personnalisé est spécifié, ajouter dans le header aussi
+      # If a custom host is specified, add in the header too
       if @credentials.host && !@credentials.host.empty?
         headers['host'] = @credentials.host
       end
@@ -49,14 +49,11 @@ module SdkRuby
     end
 
     def build_base_url
-      # Vérifier si le host est défini et non vide
       if @credentials.host && !@credentials.host.empty?
         @credentials.host
       elsif @credentials.organization_id && @credentials.instance_id
-        # Si @credentials.host n'est pas défini, utiliser la méthode de fallback
         "https://api.kai-studio.ai"
       else
-        # Si aucune donnée n'est fournie, lever une exception pour prévenir de l'erreur
         raise "Erreur: Host, organization_id ou instance_id sont manquants dans les credentials."
       end
     end
