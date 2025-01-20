@@ -20,7 +20,7 @@ gem 'sdk_ruby', git: 'https://github.com/k-ai-Documentation/sdk-ruby'
 
 or if you use SSH :
 ```bash
-gem 'sdk_ruby', git: 'git@github.com:nchevalet-KAI/sdk-ruby.git'
+gem 'sdk_ruby', git: 'git@github.com:k-ai-Documentation/sdk-ruby.git'
 ```
 
 Then
