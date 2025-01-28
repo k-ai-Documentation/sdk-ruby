@@ -4,6 +4,7 @@ require_relative "api_handler"
 require_relative 'core'
 require_relative 'audit'
 require_relative 'search'
+require_relative 'chatbot'
 require_relative 'semantic_graph'
 
 module SdkRuby

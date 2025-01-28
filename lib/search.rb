@@ -52,6 +52,16 @@ module SdkRuby
             nil
         end
 
+        # Count the requests made
+        def count_done_requests_by_date(begin_date, end_date)
+            p "Launch historic count_done_requests..."
+            response = httpx_post("/api/search/count-search-by-date",{ "beginDate" => begin_date, "endDate" => end_date })
+            handle_response(response)
+        rescue => e
+            puts "An error has occurred while processing your query: #{e.message}"
+            nil
+        end
+
         # Count answered queries
         def count_answered_done_requests
             p "Launch count_answered_done_requests..."
@@ -96,7 +106,7 @@ module SdkRuby
         # Handle API response
         def handle_response(response)
             if response.status == 200
-                response.json
+                p response.json
             else
                 puts "API error: #{response.status} - #{response.body.to_s}"
                 nil

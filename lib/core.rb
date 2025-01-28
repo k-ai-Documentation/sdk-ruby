@@ -70,6 +70,15 @@ module SdkRuby
             nil
         end
 
+        def last_indexation
+            p "Get last indexation launch..."
+            response = httpx_post("/api/orchestrator/last-indexation")
+            handle_response(response)
+        rescue => e
+            puts "An error has occurred while processing your query: #{e.message}"
+            nil
+        end
+
         def global_health
             p "Launching global server running stats..."
             response = httpx_post("/global-health")

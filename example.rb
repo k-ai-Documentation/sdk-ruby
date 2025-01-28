@@ -18,12 +18,12 @@ puts SdkRuby::KS.hello + SdkRuby::VERSION
 
 ## Call the count_documents method in Core to test
 ## First initialize with api_handler and credentials
-core = SdkRuby::Core.new(api_handler)
-## puts "Compter les documents..."
+# core = SdkRuby::Core.new(api_handler)
+# puts "Compter les documents..."
 # begin
-      ##   Then call the methods
-      # response = core.count_indexable_documents
-      # p "Réponse de l'API: #{response['response']}"
+#       #   Then call the methods
+#       response = core.count_indexable_documents
+#       p "Réponse de l'API: #{response['response']}"
 # rescue => e
 #   puts "Erreur lors de l'appel API: #{e.message}"
 # end
@@ -34,6 +34,7 @@ core = SdkRuby::Core.new(api_handler)
 # core.count_detected_documents
 # core.list_docs
 # core.differential_indexation
+# core.last_indexation
 # core.global_health
 # core.health
 # core.version
@@ -48,6 +49,10 @@ core = SdkRuby::Core.new(api_handler)
 # audit.set_duplicated_information_managed(1)
 # audit.get_documents_to_manage(10, 0)
 # audit.get_missing_subjects(30, 0)
+# audit.count_conflict_information
+# audit.count_duplicated_information
+# audit.count_missing_subjects
+## audit.get_anomalies_for_document("Sharepoint::01Y3GAAYZ2L5MNAOF3ONCJDE4K673VW7A4")
 
 # Example of calling Search methods
 # search = SdkRuby::Search.new(api_handler)
@@ -63,10 +68,20 @@ core = SdkRuby::Core.new(api_handler)
 # search.get_doc_ids(["doc_id_123", "doc_id_456"])
 ## Count the queries made
 # search.count_done_requests
+## Count the queries made per day for a given period
+# search.count_done_requests_by_date("2025-01-02","2025-01-28")
 ## Count the queries made that had responses
 # search.count_answered_done_requests
 ## Get the most recent queries
 # search.get_requests_to_api(3, 0)
+
+# Methods related to the Chatbot methods
+# chatbot = SdkRuby::Chatbot.new(api_handler)
+# Then call the methods
+# Launch or continue a conversation
+# chatbot.message("What is the maximum weight limit for packages ?", "nico123", false)
+# Get a conversation in details
+# chatbot.get_conversation("n0g2rZQBw6MiAeQpGbLO")
 
 # Methods related to the semantic graph
 ## First initialize with api_handler and credentials
