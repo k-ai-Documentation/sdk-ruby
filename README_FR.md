@@ -1,13 +1,14 @@
 # KAI SDK Ruby
 
 Ce SDK permet d'interagir avec l'API KAI. Il est écrit en Ruby et facilite les opérations suivantes avec l'API de KAI :
-- Fonctions liées au module Search
+- Fonctions liées au module Search et l'add-on conversation (chatbot)
 - Fonctions liées au module Audit
-- Fonctions liées à l'instance global (Core)
+- Fonctions liées à l'instance global : Core
 - Fonctions liées à la gestion des données du graphe sémantique
 
 Pour plus d'informations : 
 Visitez notre site : https://k-ai.ai/
+et pour toute la documentation : https://k-ai.gitbook.io/knowledge-ai
 
 ## Installation
 Pour utiliser ce SDK, clonez ce dépôt et utilisez-le dans votre projet Ruby :
