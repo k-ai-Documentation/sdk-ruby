@@ -47,12 +47,12 @@ puts SdkRuby::KS.hello + SdkRuby::VERSION
 # audit.set_conflict_managed(1)
 # audit.get_duplicated_information(limit = 20, offset = 0)
 # audit.set_duplicated_information_managed(1)
-# audit.get_documents_to_manage(10, 0)
+# audit.get_documents_to_manage(2, 0)
 # audit.get_missing_subjects(30, 0)
 # audit.count_conflict_information
 # audit.count_duplicated_information
 # audit.count_missing_subjects
-## audit.get_anomalies_for_document("Sharepoint::01Y3GAAYZ2L5MNAOF3ONCJDE4K673VW7A4")
+# audit.get_anomalies_for_document("Sharepoint::01Y3GYZ2L5JDE4K6737A4")
 
 # Example of calling Search methods
 # search = SdkRuby::Search.new(api_handler)

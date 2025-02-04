@@ -66,15 +66,15 @@ module SdkRuby
             nil
         end
 
-            # Get the conflicts for a given document
-            def get_anomalies_for_document(doc_id)
-                p "Launch get_anomalies_for_document..."
-                response = httpx_post("/api/audit/get-anomalies-for-document", { docId: doc_id })
-                handle_response(response)
-            rescue => e
-                puts "An error has occurred while processing your query: #{e.message}"
-                nil
-            end
+        # Get the conflicts for a given document
+        def get_anomalies_for_document(doc_id)
+            p "Launch get_anomalies_for_document..."
+            response = httpx_post("/api/audit/get-anomalies-for-document", { docId: doc_id })
+            handle_response(response)
+        rescue => e
+            puts "An error has occurred while processing your query: #{e.message}"
+            nil
+        end
 
         # Count the conflicts
         def count_conflict_information
@@ -111,12 +111,12 @@ module SdkRuby
         def httpx_post(endpoint, payload)
             url = "#{@api_handler.base_url}#{endpoint}"
             response = HTTPX.post(url, headers: @api_handler.headers, json: payload)
-            p response
+            # p response
         end
 
         def handle_response(response)
             if response.status == 200
-                p response.json
+                response.json
             else
                 puts "API error: #{response.status} - #{response.body.to_s}"
                 nil
