@@ -18,15 +18,16 @@ puts SdkRuby::KS.hello + SdkRuby::VERSION
 
 ## Call the count_documents method in Core to test
 ## First initialize with api_handler and credentials
-# core = SdkRuby::Core.new(api_handler)
-# puts "Compter les documents..."
-# begin
-#       #   Then call the methods
-#       response = core.count_indexable_documents
-#       p "Réponse de l'API: #{response['response']}"
-# rescue => e
-#   puts "Erreur lors de l'appel API: #{e.message}"
-# end
+core = SdkRuby::Core.new(api_handler)
+puts "Compter les documents..."
+begin
+      #   Then call the methods
+      response = core.count_indexable_documents
+      p "Réponse de l'API: #{response['response']}"
+
+rescue => e
+  puts "Erreur lors de l'appel API: #{e.message}"
+end
 
 ## Other methods in Core
 # core.count_documents
@@ -35,6 +36,7 @@ puts SdkRuby::KS.hello + SdkRuby::VERSION
 # core.list_docs
 # core.differential_indexation
 # core.last_indexation
+# core.list_indexed_documents
 # core.global_health
 # core.health
 # core.version
