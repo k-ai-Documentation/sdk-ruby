@@ -26,6 +26,18 @@ module SdkRuby
             nil
         end
 
+            # Set a conflict new state
+            def conflict_information_set_state(information_id, state)
+                p information_id
+                p state
+                p "Launch set_state for conflict_information..."
+                response = httpx_post("/api/audit/conflict-information/set-state", { id: information_id, state: state })
+                handle_response(response)
+            rescue => e
+                puts "An error has occurred while processing your query: #{e.message}"
+                nil
+            end
+
         # Get information about duplicates
         def get_duplicated_information(limit = 20, offset = 0)
             p "Launch get_duplicated_information..."
@@ -45,6 +57,16 @@ module SdkRuby
             puts "An error has occurred while processing your query: #{e.message}"
             nil
         end
+
+                # Set a duplicate new state
+                def duplicated_information_set_state(information_id, state)
+                    p "Launch set_state for duplicated_information..."
+                    response = httpx_post("/api/audit/duplicated-information/set-state", { id: information_id, state: state })
+                    handle_response(response)
+                rescue => e
+                    puts "An error has occurred while processing your query: #{e.message}"
+                    nil
+                end
 
         # Obtain the documents'list to be managed
         def get_documents_to_manage(limit = 20, offset = 0)

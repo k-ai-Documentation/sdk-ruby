@@ -22,8 +22,16 @@ core = SdkRuby::Core.new(api_handler)
 puts "Compter les documents..."
 begin
       #   Then call the methods
-      response = core.count_indexable_documents
-      p "Réponse de l'API: #{response['response']}"
+      p core.differential_indexation
+      
+      p core.last_indexation
+      p core.last_finished_indexation
+      # response = core.list_docs
+      # p "Réponse de l'API: #{response['response'].size}"
+
+      # response2 = core.list_indexed_documents
+      # p "Réponse 2 de l'API: #{response2['response'].size}"
+      # p "Réponse 2 de l'API: #{response2['response']}"
 
 rescue => e
   puts "Erreur lors de l'appel API: #{e.message}"
@@ -36,6 +44,7 @@ end
 # core.list_docs
 # core.differential_indexation
 # core.last_indexation
+# core.last_finished_indexation
 # core.list_indexed_documents
 # core.global_health
 # core.health
@@ -43,18 +52,22 @@ end
 
 ## Call the audit methods, some examples
 ## First initialize with api_handler and credentials
-# audit = SdkRuby::Audit.new(api_handler)
+#  audit = SdkRuby::Audit.new(api_handler)
 ## Then call the methods
-# audit.get_conflict_information(limit = 5, offset = 0)
+# p audit.get_conflict_information(limit = 1, offset = 0)
+# p audit.conflict_information_set_state("103K95MB_KTK57Ts58Yr", "ignored")
 # audit.set_conflict_managed(1)
-# audit.get_duplicated_information(limit = 20, offset = 0)
+# p audit.get_conflict_information(limit = 1, offset = 0)
+# 
+#  p audit.get_duplicated_information(limit = 20, offset = 0)
+# audit.duplicated_information_set_state(2, "managed")
 # audit.set_duplicated_information_managed(1)
 # audit.get_documents_to_manage(2, 0)
 # audit.get_missing_subjects(30, 0)
 # audit.count_conflict_information
 # audit.count_duplicated_information
 # audit.count_missing_subjects
-# audit.get_anomalies_for_document("Sharepoint::01Y3GYZ2L5JDE4K6737A4")
+# audit.get_anomalies_for_document("Sharepoint::01Y3GAAY2WJBLXEQTPSCJUO")
 
 # Example of calling Search methods
 # search = SdkRuby::Search.new(api_handler)
@@ -81,7 +94,7 @@ end
 # chatbot = SdkRuby::Chatbot.new(api_handler)
 # Then call the methods
 # Launch or continue a conversation
-# chatbot.message("What is the maximum weight limit for packages ?", "nico123", false)
+# chatbot.message("What is the maximum weight limit for packages ?", "sdk_demo_user", false)
 # Get a conversation in details
 # chatbot.get_conversation("n0g2rZQBw6MiAeQpGbLO")
 

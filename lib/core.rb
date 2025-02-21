@@ -79,6 +79,15 @@ module SdkRuby
             nil
         end
 
+        def last_finished_indexation
+            p "Get last finished indexation ..."
+            response = httpx_post("/api/orchestrator/last-finished-indexation")
+            handle_response(response)
+        rescue => e
+            puts "An error has occurred while processing your query: #{e.message}"
+            nil
+        end
+
         def list_indexed_documents
             p "Get list of indexed documents launch..."
             response = httpx_post("/api/orchestrator/list-indexed-documents")

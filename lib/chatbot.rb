@@ -6,12 +6,13 @@ module SdkRuby
             @api_handler = api_handler
         end
 
-        def message(user_message, user_id, multi_documents)
+        def message(user_message, user_id, multi_documents, conversation_id)
             p "Launch message..."
             response = httpx_post("/api/chatbot/message", {
                 "user_message" => user_message,
                 "user_id" => user_id,
                 "multiDocuments" => multi_documents,
+                "id" => conversation_id
             })
             handle_response(response)
         rescue => e
