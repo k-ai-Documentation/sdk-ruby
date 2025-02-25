@@ -22,10 +22,9 @@ core = SdkRuby::Core.new(api_handler)
 puts "Compter les documents..."
 begin
       #   Then call the methods
-      p core.differential_indexation
-      
-      p core.last_indexation
-      p core.last_finished_indexation
+      # p core.differential_indexation
+      # p core.last_indexation
+      # p core.last_finished_indexation
       # response = core.list_docs
       # p "Réponse de l'API: #{response['response'].size}"
 
@@ -41,11 +40,11 @@ end
 # core.count_documents
 # core.count_indexed_documents
 # core.count_detected_documents
-# core.list_docs
+p core.list_docs(limit = 10, offset = 0)
 # core.differential_indexation
 # core.last_indexation
 # core.last_finished_indexation
-# core.list_indexed_documents
+# p core.list_indexed_documents(limit = 10, offset = 0)
 # core.global_health
 # core.health
 # core.version
