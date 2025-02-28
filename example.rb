@@ -23,10 +23,12 @@ puts "Compter les documents..."
 begin
       #   Then call the methods
       # p core.differential_indexation
-      # p core.last_indexation
-      # p core.last_finished_indexation
+      p core.last_indexation
+      p core.last_finished_indexation
+
       # response = core.list_docs
       # p "Réponse de l'API: #{response['response'].size}"
+      # p "Réponse de l'API: #{response['response']}"
 
       # response2 = core.list_indexed_documents
       # p "Réponse 2 de l'API: #{response2['response'].size}"
@@ -40,7 +42,8 @@ end
 # core.count_documents
 # core.count_indexed_documents
 # core.count_detected_documents
-p core.list_docs(limit = 10, offset = 0)
+# core.count_in_progress_documents
+# p core.list_docs(limit = 10, offset = 0)
 # core.differential_indexation
 # core.last_indexation
 # core.last_finished_indexation
@@ -98,10 +101,10 @@ p core.list_docs(limit = 10, offset = 0)
 # chatbot.get_conversation("n0g2rZQBw6MiAeQpGbLO")
 
 # Methods related to the semantic graph
-## First initialize with api_handler and credentials
+# First initialize with api_handler and credentials
 # semantic_graph = SdkRuby::SemanticGraph.new(api_handler)
-## Then call the methods
-# semantic_graph.get_nodes(limit = 5, offset = 0)
+# Then call the methods
+# p semantic_graph.get_nodes(limit = 5, offset = 0)
 # semantic_graph.get_linked_nodes(1)
 # semantic_graph.get_nodes_by_label("UPS")
 # semantic_graph.identify_nodes("United Parcel Service")

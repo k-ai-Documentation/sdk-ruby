@@ -43,8 +43,17 @@ module SdkRuby
             nil
         end
 
+        def count_in_progress_documents
+            p "Launch count documents with pending indexation..."
+            response = httpx_post("/api/orchestrator/stats/count-inprogress-indexation-documents")
+            handle_response(response)
+        rescue => e
+            puts "An error has occurred while processing your query: #{e.message}"
+            nil
+        end
+
         def list_docs(limit = 20, offset = 0)
-            p "List all indexed documents..."
+            p "List all documents..."
             response = httpx_post("/api/orchestrator/list-docs", { limit: limit, offset: offset })
             handle_response(response)
         rescue => e
