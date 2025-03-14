@@ -7,9 +7,9 @@ module SdkRuby
         end
 
         # Obtain information on conflicts
-        def get_conflict_information(limit = 20, offset = 0)
+        def get_conflict_information(limit = 20, offset = 0, query = "")
             p "Launch get_conflict_information..."
-            response = httpx_post("/api/audit/conflict-information", { limit: limit, offset: offset })
+            response = httpx_post("/api/audit/conflict-information", { limit: limit, offset: offset, query: query})
             handle_response(response)
         rescue => e
             puts "An error has occurred while processing your query: #{e.message}"
@@ -39,9 +39,9 @@ module SdkRuby
             end
 
         # Get information about duplicates
-        def get_duplicated_information(limit = 20, offset = 0)
+        def get_duplicated_information(limit = 20, offset = 0, query= "")
             p "Launch get_duplicated_information..."
-            response = httpx_post("/api/audit/duplicated-information", { limit: limit, offset: offset })
+            response = httpx_post("/api/audit/duplicated-information", { limit: limit, offset: offset, query: query })
             handle_response(response)
         rescue => e
             puts "An error has occurred while processing your query: #{e.message}"

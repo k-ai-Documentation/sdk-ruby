@@ -22,9 +22,11 @@ core = SdkRuby::Core.new(api_handler)
 puts "Compter les documents..."
 begin
       #   Then call the methods
-      # p core.differential_indexation
-      p core.last_indexation
-      p core.last_finished_indexation
+      # p core.count_detected_documents
+      # p core.count_documents #analyzed
+      p core.count_indexable_documents
+      p core.count_in_progress_documents
+      p core.count_indexed_documents
 
       # response = core.list_docs
       # p "Réponse de l'API: #{response['response'].size}"
@@ -39,15 +41,16 @@ rescue => e
 end
 
 ## Other methods in Core
-# core.count_documents
-# core.count_indexed_documents
 # core.count_detected_documents
+# core.count_documents #analyzed
+# core.count_indexable_documents
 # core.count_in_progress_documents
-# p core.list_docs(limit = 10, offset = 0)
+# core.count_indexed_documents
+# core.list_docs(limit = 10, offset = 0)
 # core.differential_indexation
 # core.last_indexation
 # core.last_finished_indexation
-# p core.list_indexed_documents(limit = 10, offset = 0)
+# core.list_indexed_documents(limit = 10, offset = 0)
 # core.global_health
 # core.health
 # core.version
@@ -57,11 +60,12 @@ end
 #  audit = SdkRuby::Audit.new(api_handler)
 ## Then call the methods
 # p audit.get_conflict_information(limit = 1, offset = 0)
+# p audit.get_conflict_information(limit = 5, offset = 0, query = "Document Purpose")
 # p audit.conflict_information_set_state("103K95MB_KTK57Ts58Yr", "ignored")
 # audit.set_conflict_managed(1)
 # p audit.get_conflict_information(limit = 1, offset = 0)
 # 
-#  p audit.get_duplicated_information(limit = 20, offset = 0)
+#  p audit.get_duplicated_information(limit = 2, offset = 1, query = "URL")
 # audit.duplicated_information_set_state(2, "managed")
 # audit.set_duplicated_information_managed(1)
 # audit.get_documents_to_manage(2, 0)
@@ -69,7 +73,7 @@ end
 # audit.count_conflict_information
 # audit.count_duplicated_information
 # audit.count_missing_subjects
-# audit.get_anomalies_for_document("Sharepoint::01Y3GAAY2WJBLXEQTPSCJUO")
+# audit.get_anomalies_for_document("Sharepoint::01Y3GAAWJBLXEQTPJUO")
 
 # Example of calling Search methods
 # search = SdkRuby::Search.new(api_handler)
@@ -107,4 +111,4 @@ end
 # p semantic_graph.get_nodes(limit = 5, offset = 0)
 # semantic_graph.get_linked_nodes(1)
 # semantic_graph.get_nodes_by_label("UPS")
-# semantic_graph.identify_nodes("United Parcel Service")
+# p semantic_graph.identify_nodes("patrick")
