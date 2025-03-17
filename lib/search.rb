@@ -106,7 +106,7 @@ module SdkRuby
         # Handle API response
         def handle_response(response)
             if response.status == 200
-                p response.json
+                response.json
             else
                 puts "API error: #{response.status} - #{response.body.to_s}"
                 nil
