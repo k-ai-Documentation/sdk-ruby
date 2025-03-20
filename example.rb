@@ -24,17 +24,19 @@ begin
       #   Then call the methods
       # p core.count_detected_documents
       # p core.count_documents #analyzed
-      p core.count_indexable_documents
-      p core.count_in_progress_documents
-      p core.count_indexed_documents
+      # p core.count_indexable_documents
+      # p core.count_in_progress_documents
+      # p core.count_indexed_documents
+
+      # p core.check_pending_indexation
 
       # response = core.list_docs
       # p "Réponse de l'API: #{response['response'].size}"
-      # p "Réponse de l'API: #{response['response']}"
+      # p "Réponse de l'API: #{response['response'].first}"
 
       # response2 = core.list_indexed_documents
       # p "Réponse 2 de l'API: #{response2['response'].size}"
-      # p "Réponse 2 de l'API: #{response2['response']}"
+      # p "Réponse 2 de l'API: #{response2['response'].first}"
 
 rescue => e
   puts "Erreur lors de l'appel API: #{e.message}"
@@ -51,6 +53,7 @@ end
 # core.last_indexation
 # core.last_finished_indexation
 # core.list_indexed_documents(limit = 10, offset = 0)
+# core.check_pending_indexation
 # core.global_health
 # core.health
 # core.version
