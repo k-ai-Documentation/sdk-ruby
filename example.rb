@@ -19,7 +19,7 @@ puts SdkRuby::KS.hello + SdkRuby::VERSION
 ## Call the count_documents method in Core to test
 ## First initialize with api_handler and credentials
 core = SdkRuby::Core.new(api_handler)
-puts "Compter les documents..."
+puts "Begin tests..."
 begin
       #   Then call the methods
       # p core.count_detected_documents
@@ -28,16 +28,18 @@ begin
       # p core.count_in_progress_documents
       # p core.count_indexed_documents
 
-      # p core.check_pending_indexation
+      p core.check_pending_job
 
       # response = core.list_docs
       # p "Réponse de l'API: #{response['response'].size}"
-      # p "Réponse de l'API: #{response['response'].first}"
+      # p "Réponse de l'API: #{response['response'].first(3)}"
 
-      # response2 = core.list_indexed_documents
+      # response2 = core.list_indexed_documents(limit = 50, offset = 48)
       # p "Réponse 2 de l'API: #{response2['response'].size}"
-      # p "Réponse 2 de l'API: #{response2['response'].first}"
+      # p "Réponse 2 de l'API: #{response2['response'].first(3)}"
 
+      p core.global_health
+      p core.health
 rescue => e
   puts "Erreur lors de l'appel API: #{e.message}"
 end
@@ -48,12 +50,13 @@ end
 # core.count_indexable_documents
 # core.count_in_progress_documents
 # core.count_indexed_documents
+
 # core.list_docs(limit = 10, offset = 0)
 # core.differential_indexation
+# core.check_pending_job
+# core.list_indexed_documents(limit = 10, offset = 0)
 # core.last_indexation
 # core.last_finished_indexation
-# core.list_indexed_documents(limit = 10, offset = 0)
-# core.check_pending_indexation
 # core.global_health
 # core.health
 # core.version
@@ -114,4 +117,4 @@ end
 # p semantic_graph.get_nodes(limit = 5, offset = 0)
 # semantic_graph.get_linked_nodes(1)
 # semantic_graph.get_nodes_by_label("UPS")
-# p semantic_graph.identify_nodes("patrick")
+# p semantic_graph.identify_nodes("barthez", true)

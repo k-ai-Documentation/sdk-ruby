@@ -36,9 +36,9 @@ module SdkRuby
         end
 
         # Get node information from a word
-        def identify_nodes(query)
+        def identify_nodes(query, need_documents_content = false)
             p "Search node from a query..."
-            response = httpx_post("/api/semantic-graph/identify-nodes", { query: query })
+            response = httpx_post("/api/semantic-graph/identify-nodes", { query: query, need_documents_content: need_documents_content})
             handle_response(response)
         rescue => e
             puts "An error has occurred while processing your query: #{e.message}"

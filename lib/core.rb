@@ -106,9 +106,9 @@ module SdkRuby
             nil
         end
 
-        def check_pending_indexation
-            p "Check pending indexation ..."
-            response = httpx_post("/api/orchestrator/check-pending-indexation")
+        def check_pending_job
+            p "Check pending jobs ..."
+            response = httpx_post("/api/orchestrator/check-pending-job")
             handle_response(response)
         rescue => e
             puts "An error has occurred while processing your query: #{e.message}"
@@ -133,15 +133,15 @@ module SdkRuby
             nil
         end
 
-        # Obtenir la version de l'API
-        def version
-            p "Get version of service kai-api..."
-            response = httpx_post("/version", {})
-            handle_response(response)
-        rescue => e
-            puts "An error has occurred while processing your query: #{e.message}"
-            nil
-        end
+        # # Obtenir la version de l'API
+        # def version
+        #     p "Get version of service kai-api..."
+        #     response = httpx_post("/version", {})
+        #     handle_response(response)
+        # rescue => e
+        #     puts "An error has occurred while processing your query: #{e.message}"
+        #     nil
+        # end
 
         private
         def httpx_post(endpoint, payload = nil)
