@@ -1,10 +1,10 @@
 # KAI SDK Ruby
 
 This SDK allows you to interact with the KAI API. It is written in Ruby and facilitates the following operations with the KAI API:
-- Functions related to the Search module and Chatbot conversational addon
-- Functions related to the Audit module
-- Functions related to the global instance : Core
-- Functions related to the semantic graph data management
+- Functions related to the Search module (Search) and conversational addon (Chatbot)
+- Functions related to the Audit Knowledge module : Audit
+- Functions related to the Audit Documents : Core
+- Functions related to the semantic graph data management : Graph
 
 For more information:
 Visit our website : https://k-ai.ai/
@@ -40,6 +40,8 @@ require 'sdk_ruby'
 
 # Initialize credentials
 credentials = SdkRuby::KSCredentials.new("API_KEY", "Organization_ID", "Instance_ID")
+
+(Don't forget to create a file dedicated to your credentials. An exemple of .env file is in this repo.)
 
 # Create the ApiHandler instance
 api_handler = SdkRuby::ApiHandler.new(credentials)

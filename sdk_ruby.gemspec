@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   
     spec.summary       = "Un SDK pour interagir avec l'API KAI"
     spec.description   = "Ce SDK permet d'interagir avec l'API de KAI pour faciliter les intégrations."
-    spec.homepage      = "https://github.com/nchevalet-KAI/sdk-ruby"
+    spec.homepage      = "https://github.com/k-ai-Documentation"
     spec.license       = "MIT"
   
     spec.files         = Dir["lib/**/*.rb"]
