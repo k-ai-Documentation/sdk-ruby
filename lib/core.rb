@@ -52,6 +52,26 @@ module SdkRuby
             nil
         end
 
+        # Getting a document's signature
+        def get_doc_signature(doc_id)
+            p "Launch get_doc_signature..."
+            response = httpx_post("/api/orchestrator/doc", { id: doc_id } )
+            handle_response(response)
+        rescue => e
+            puts "An error has occurred while processing your query: #{e.message}"
+            nil
+        end
+
+        # Get documents by ID
+        def get_doc_ids(doc_ids)
+            p "Launch get_doc_ids..."
+            response = httpx_post("/api/orchestrator/docs", { "docsIds" => doc_ids })
+            handle_response(response)
+        rescue => e
+            puts "An error has occurred while processing your query: #{e.message}"
+            nil
+        end
+
         def list_docs(limit = 20, offset = 0)
             p "List all documents..."
             response = httpx_post("/api/orchestrator/list-docs", { limit: limit, offset: offset })
@@ -61,7 +81,7 @@ module SdkRuby
             nil
         end
 
-        def list_indexed_documents(limit = 20, offset = 0)
+        def list_indexed_documents(limit = 100, offset = 0)
             p "Get list of indexed documents launch..."
             response = httpx_post("/api/orchestrator/list-indexed-documents", { limit: limit, offset: offset })
             handle_response(response)

@@ -18,28 +18,19 @@ puts SdkRuby::KS.hello + SdkRuby::VERSION
 
 ## Call the count_documents method in Core to test
 ## First initialize with api_handler and credentials
-core = SdkRuby::Core.new(api_handler)
+# core = SdkRuby::Core.new(api_handler)
 puts "Begin tests..."
 begin
-      #   Then call the methods
-      # p core.count_detected_documents
-      # p core.count_documents #analyzed
-      # p core.count_indexable_documents
-      # p core.count_in_progress_documents
-      # p core.count_indexed_documents
-
-      p core.check_pending_job
-
       # response = core.list_docs
       # p "Réponse de l'API: #{response['response'].size}"
       # p "Réponse de l'API: #{response['response'].first(3)}"
 
-      # response2 = core.list_indexed_documents(limit = 50, offset = 48)
+      # response2 = core.list_indexed_documents(limit = 100, offset = 0)
       # p "Réponse 2 de l'API: #{response2['response'].size}"
       # p "Réponse 2 de l'API: #{response2['response'].first(3)}"
 
-      p core.global_health
-      p core.health
+      # p core.global_health
+      # p core.health 
 rescue => e
   puts "Erreur lors de l'appel API: #{e.message}"
 end
@@ -50,6 +41,11 @@ end
 # core.count_indexable_documents
 # core.count_in_progress_documents
 # core.count_indexed_documents
+
+## Get a document’s signature
+# core.get_doc_signature("doc_id_123")
+## Get multiple documents by ID
+# core.get_doc_ids(["doc_id_123", "doc_id_456"])
 
 # core.list_docs(limit = 10, offset = 0)
 # core.differential_indexation
@@ -89,14 +85,10 @@ end
 ## Identify a specific document from a conversation
 # conversation = [{ "from" => "user", "message" => "how many tires tires were produced in 2018 ?"}]
 # search.identify_specific_document(conversation)
-## Get a document’s signature
-# search.get_doc_signature("doc_id_123")
-## Get multiple documents by ID
-# search.get_doc_ids(["doc_id_123", "doc_id_456"])
 ## Count the queries made
 # search.count_done_requests
 ## Count the queries made per day for a given period
-# search.count_done_requests_by_date("2025-01-02","2025-01-28")
+# search.count_done_requests_by_date("2025-03-02","2025-04-22")
 ## Count the queries made that had responses
 # search.count_answered_done_requests
 ## Get the most recent queries
@@ -117,4 +109,4 @@ end
 # p semantic_graph.get_nodes(limit = 5, offset = 0)
 # semantic_graph.get_linked_nodes(1)
 # semantic_graph.get_nodes_by_label("UPS")
-# p semantic_graph.identify_nodes("barthez", true)
+# p semantic_graph.identify_nodes("fabien barthez", true)

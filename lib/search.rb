@@ -22,26 +22,6 @@ module SdkRuby
             nil
         end
 
-        # Getting a document's signature
-        def get_doc_signature(doc_id)
-            p "Launch get_doc_signature..."
-            response = httpx_post("/api/search/doc", { "id" => doc_id } )
-            handle_response(response)
-        rescue => e
-            puts "An error has occurred while processing your query: #{e.message}"
-            nil
-        end
-
-        # Get documents by ID
-        def get_doc_ids(doc_ids)
-            p "Launch get_doc_ids..."
-            response = httpx_post("/api/search/docs", { "docsIds" => doc_ids })
-            handle_response(response)
-        rescue => e
-            puts "An error has occurred while processing your query: #{e.message}"
-            nil
-        end
-
         # Count the requests made
         def count_done_requests
             p "Launch count_done_requests..."
@@ -55,7 +35,7 @@ module SdkRuby
         # Count the requests made
         def count_done_requests_by_date(begin_date, end_date)
             p "Launch historic count_done_requests..."
-            response = httpx_post("/api/search/count-search-by-date",{ "beginDate" => begin_date, "endDate" => end_date })
+            response = httpx_post("/api/search/count-search-by-date",{ "beginDate": begin_date, "endDate": end_date })
             handle_response(response)
         rescue => e
             puts "An error has occurred while processing your query: #{e.message}"
