@@ -41,7 +41,7 @@ require 'sdk_ruby'
 # Initialize credentials
 credentials = SdkRuby::KSCredentials.new("API_KEY", "Organization_ID", "Instance_ID")
 
-(Don't forget to create a file dedicated to your credentials. An exemple of .env file is in this repo.)
+(Do not forget to create a file dedicated to your credentials. An exemple of .env file is in this repo.)
 
 # Create the ApiHandler instance
 api_handler = SdkRuby::ApiHandler.new(credentials)

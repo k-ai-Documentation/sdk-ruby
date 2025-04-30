@@ -7,50 +7,59 @@ module SdkRuby
             @api_handler = api_handler
         end
   
-        def count_documents
-            p "Launch count documents..."
-            response = httpx_post("/api/orchestrator/stats/count-documents")
+        def count_documents_by_state(state = "")
+            p "Launch count documents by state..."
+            response = httpx_post("/api/core/count-documents-by-state", { state: state } )
             handle_response(response)
         rescue => e
             puts "An error has occurred while processing your query: #{e.message}"
             nil
         end
 
-        def count_indexable_documents
-            p "Launch count indexable documents..."
-            response = httpx_post("/api/orchestrator/stats/count-indexable-documents")
-            handle_response(response)
-        rescue => e
-            puts "An error has occurred while processing your query: #{e.message}"
-            nil
-        end
+        # def count_documents
+        #     p "Launch count documents..."
+        #     response = httpx_post("/api/orchestrator/stats/count-documents")
+        #     handle_response(response)
+        # rescue => e
+        #     puts "An error has occurred while processing your query: #{e.message}"
+        #     nil
+        # end
 
-        def count_indexed_documents
-            p "Launch count indexed documents..."
-            response = httpx_post("/api/orchestrator/stats/count-indexed-documents")
-            handle_response(response)
-        rescue => e
-            puts "An error has occurred while processing your query: #{e.message}"
-            nil
-        end
+        # def count_indexable_documents
+        #     p "Launch count indexable documents..."
+        #     response = httpx_post("/api/orchestrator/stats/count-indexable-documents")
+        #     handle_response(response)
+        # rescue => e
+        #     puts "An error has occurred while processing your query: #{e.message}"
+        #     nil
+        # end
 
-        def count_detected_documents
-            p "Launch count detected documents..."
-            response = httpx_post("/api/orchestrator/stats/count-detected-documents")
-            handle_response(response)
-        rescue => e
-            puts "An error has occurred while processing your query: #{e.message}"
-            nil
-        end
+        # def count_indexed_documents
+        #     p "Launch count indexed documents..."
+        #     response = httpx_post("/api/orchestrator/stats/count-indexed-documents")
+        #     handle_response(response)
+        # rescue => e
+        #     puts "An error has occurred while processing your query: #{e.message}"
+        #     nil
+        # end
 
-        def count_in_progress_documents
-            p "Launch count documents with pending indexation..."
-            response = httpx_post("/api/orchestrator/stats/count-inprogress-indexation-documents")
-            handle_response(response)
-        rescue => e
-            puts "An error has occurred while processing your query: #{e.message}"
-            nil
-        end
+        # def count_detected_documents
+        #     p "Launch count detected documents..."
+        #     response = httpx_post("/api/orchestrator/stats/count-detected-documents")
+        #     handle_response(response)
+        # rescue => e
+        #     puts "An error has occurred while processing your query: #{e.message}"
+        #     nil
+        # end
+
+        # def count_in_progress_documents
+        #     p "Launch count documents with pending indexation..."
+        #     response = httpx_post("/api/orchestrator/stats/count-inprogress-indexation-documents")
+        #     handle_response(response)
+        # rescue => e
+        #     puts "An error has occurred while processing your query: #{e.message}"
+        #     nil
+        # end
 
         # Getting a document's signature
         def get_doc_signature(doc_id)
@@ -72,23 +81,24 @@ module SdkRuby
             nil
         end
 
-        def list_docs(limit = 20, offset = 0)
+        def list_docs(limit = 20, offset = 0, state = "")
             p "List all documents..."
-            response = httpx_post("/api/orchestrator/list-docs", { limit: limit, offset: offset })
+            response = httpx_post("/api/orchestrator/list-docs", { limit: limit, offset: offset, state: state })
             handle_response(response)
         rescue => e
             puts "An error has occurred while processing your query: #{e.message}"
             nil
         end
 
-        def list_indexed_documents(limit = 100, offset = 0)
-            p "Get list of indexed documents launch..."
-            response = httpx_post("/api/orchestrator/list-indexed-documents", { limit: limit, offset: offset })
-            handle_response(response)
-        rescue => e
-            puts "An error has occurred while processing your query: #{e.message}"
-            nil
-        end
+        # No more used
+        # def list_indexed_documents(limit = 100, offset = 0)
+        #     p "Get list of indexed documents launch..."
+        #     response = httpx_post("/api/orchestrator/list-indexed-documents", { limit: limit, offset: offset })
+        #     handle_response(response)
+        # rescue => e
+        #     puts "An error has occurred while processing your query: #{e.message}"
+        #     nil
+        # end
 
         def download_file(file_id)
             p "Launching file download..."

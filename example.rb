@@ -21,7 +21,7 @@ puts SdkRuby::KS.hello + SdkRuby::VERSION
 # core = SdkRuby::Core.new(api_handler)
 puts "Begin tests..."
 begin
-      # response = core.list_docs
+      # response = core.list_docs(limit = 100, offset = 0, state = "INDEXED")
       # p "Réponse de l'API: #{response['response'].size}"
       # p "Réponse de l'API: #{response['response'].first(3)}"
 
@@ -36,21 +36,16 @@ rescue => e
 end
 
 ## Other methods in Core
-# core.count_detected_documents
-# core.count_documents #analyzed
-# core.count_indexable_documents
-# core.count_in_progress_documents
-# core.count_indexed_documents
+# core.count_documents_by_state("INDEXED")
 
 ## Get a document’s signature
-# core.get_doc_signature("doc_id_123")
+# p core.get_doc_signature("Sharepoint::01EWFXH5RRVV4F3G62KVC2QVJX6FVHMW46")
 ## Get multiple documents by ID
 # core.get_doc_ids(["doc_id_123", "doc_id_456"])
 
-# core.list_docs(limit = 10, offset = 0)
+# p core.list_docs(limit = 100, offset = 0, state = "")
 # core.differential_indexation
 # core.check_pending_job
-# core.list_indexed_documents(limit = 10, offset = 0)
 # core.last_indexation
 # core.last_finished_indexation
 # core.global_health
@@ -67,7 +62,7 @@ end
 # audit.set_conflict_managed(1)
 # p audit.get_conflict_information(limit = 1, offset = 0)
 # 
-#  p audit.get_duplicated_information(limit = 2, offset = 1, query = "URL")
+# p audit.get_duplicated_information(limit = 2, offset = 1, query = "URL")
 # audit.duplicated_information_set_state(2, "managed")
 # audit.set_duplicated_information_managed(1)
 # audit.get_documents_to_manage(2, 0)
