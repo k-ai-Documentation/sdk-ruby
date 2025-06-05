@@ -21,7 +21,7 @@ puts SdkRuby::KS.hello + SdkRuby::VERSION
 # core = SdkRuby::Core.new(api_handler)
 puts "Begin tests..."
 begin
-      # response = core.list_docs(limit = 100, offset = 0, state = "INDEXED")
+      # response = core.list_docs(limit = 3, offset = 0, state = "")
       # p "Réponse de l'API: #{response['response'].size}"
       # p "Réponse de l'API: #{response['response'].first(3)}"
 
@@ -68,9 +68,12 @@ end
 # audit.get_documents_to_manage(2, 0)
 # audit.get_missing_subjects(30, 0)
 # audit.count_conflict_information
+# audit.count_conflict_information_by_date(begin_date, end_date)
 # audit.count_duplicated_information
+# audit.count_duplicated_information_by_date(begin_date, end_date)
+
 # audit.count_missing_subjects
-# audit.get_anomalies_for_document("Sharepoint::01Y3GAAWJBLXEQTPJUO")
+# p audit.get_anomalies_for_document("Sharepoint::01EWFXH5RRVV4F3G62KVC2QVJX6FVHMW46")["response"].first
 
 # Example of calling Search methods
 # search = SdkRuby::Search.new(api_handler)
@@ -86,6 +89,8 @@ end
 # search.count_done_requests_by_date("2025-03-02","2025-04-22")
 ## Count the queries made that had responses
 # search.count_answered_done_requests
+## Count the queries made per day for a given period
+# search.count_answered_done_requests_by_date("2025-05-02","2025-06-04")
 ## Get the most recent queries
 # search.get_requests_to_api(3, 0)
 

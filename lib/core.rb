@@ -6,7 +6,7 @@ module SdkRuby
         def initialize(api_handler)
             @api_handler = api_handler
         end
-  
+        
         def count_documents_by_state(state = "")
             p "Launch count documents by state..."
             response = httpx_post("/api/core/count-documents-by-state", { state: state } )

@@ -108,10 +108,29 @@ module SdkRuby
             nil
         end
 
+        # Count the conflicts by date 
+        def count_conflict_information_by_date(begin_date, end_date)
+            p "Launch historic conflicts count..."
+            response = httpx_post("/api/audit/count-conflict-by-date",{ "beginDate": begin_date, "endDate": end_date })
+            handle_response(response)
+        rescue => e
+            puts "An error has occurred while processing your query: #{e.message}"
+            nil
+        end
+
         # Count the duplications
         def count_duplicated_information
             p "Launch count_duplicated_information..."
             response = httpx_post("/api/audit/count-duplicated-information", {})
+            handle_response(response)
+        rescue => e
+            puts "An error has occurred while processing your query: #{e.message}"
+            nil
+        end
+        # Count the duplicates by date 
+        def count_duplicated_information_by_date(begin_date, end_date)
+            p "Launch historic conflicts count..."
+            response = httpx_post("/api/audit/count-duplicate-by-date",{ "beginDate": begin_date, "endDate": end_date })
             handle_response(response)
         rescue => e
             puts "An error has occurred while processing your query: #{e.message}"
