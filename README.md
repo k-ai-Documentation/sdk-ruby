@@ -3,7 +3,8 @@
 This SDK allows you to interact with the KAI API. It is written in Ruby and facilitates the following operations with the KAI API:
 - Functions related to the Search module (Search) and conversational addon (Chatbot)
 - Functions related to the Audit Knowledge module : Audit
-- Functions related to the Audit Documents : Core
+- Functions related to the Audit Documents : Document
+- Fonctions related to the indexing of documents : Core 
 - Functions related to the semantic graph data management : Graph
 
 For more information:

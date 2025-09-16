@@ -1,9 +1,10 @@
 # KAI SDK Ruby
 
 Ce SDK permet d'interagir avec l'API KAI. Il est écrit en Ruby et facilite les opérations suivantes avec l'API de KAI :
+- Fonctions liées à l'indexation : Core ou Orchestrator 
 - Fonctions liées au module de recherche Question-Réponse (Search) et l'add-on conversation (Chatbot)
+- Fonctions liées à l'Audit de la base documentaire : Document
 - Fonctions liées au module Audit Knowledge : Audit
-- Fonctions liées à l'Audit de la base documentaire : Core
 - Fonctions liées à la gestion des données du graphe sémantique : Semantic Graph
 
 Pour plus d'informations : 
