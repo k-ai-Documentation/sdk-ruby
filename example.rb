@@ -16,41 +16,41 @@ api_handler = SdkRuby::ApiHandler.new(credentials)
 ## Test the hello method
 puts SdkRuby::KS.hello + SdkRuby::VERSION
 
-## Call the count_documents method in Core to test
+## Call the count_documents method in Document to test
 ## First initialize with api_handler and credentials
-# core = SdkRuby::Core.new(api_handler)
+document = SdkRuby::Document.new(api_handler)
 puts "Begin tests..."
 begin
-      # response = core.list_docs(limit = 3, offset = 0, state = "")
-      # p "Réponse de l'API: #{response['response'].size}"
-      # p "Réponse de l'API: #{response['response'].first(3)}"
+      response = document.list_docs(limit = 3, offset = 0, state = "")
+      p "Réponse de l'API: #{response['response'].size}"
+      p "Réponse de l'API: #{response['response'].first}"
 
-      # response2 = core.list_indexed_documents(limit = 100, offset = 0)
-      # p "Réponse 2 de l'API: #{response2['response'].size}"
-      # p "Réponse 2 de l'API: #{response2['response'].first(3)}"
-
-      # p core.global_health
-      # p core.health 
+      p document.count_documents_by_state("INDEXED")
+      # 
 rescue => e
   puts "Erreur lors de l'appel API: #{e.message}"
 end
 
-## Other methods in Core
-# core.count_documents_by_state("INDEXED")
-
-## Get a document’s signature
-# p core.get_doc_signature("Sharepoint::01EWFXH5RRVV4F3G62KVC2QVJX6FVHMW46")
+## Methods in Documents
+## Get documents'list
+# document.list_docs(limit = 2, offset = 0, state = "")
+## Get a document’s information
+# document.get_doc_information("Sharepoint::012KVC2QVJX6FVHMW46")
 ## Get multiple documents by ID
-# core.get_doc_ids(["doc_id_123", "doc_id_456"])
+# document.get_doc_by_ids(["GENERIC::memorice-search::02abb178-ccbb-40de-8413-bbd840fd7578", "GENERIC::memorice-search::02bb261d-8857-42b1-8a8c-94e6750ecd16"])
+## Get documents count with state variable
+# document.count_documents_by_state("INDEXED")
 
-# p core.list_docs(limit = 100, offset = 0, state = "")
+## Methods in Core / Orchestrator
+## First initialize with api_handler and credentials
+# core = SdkRuby::Core.new(api_handler)
+## Methodes de Core / Orchestrator
 # core.differential_indexation
-# core.check_pending_job
-# core.last_indexation
-# core.last_finished_indexation
-# core.global_health
-# core.health
-# core.version
+# core.reindex_document("Sharepoint::012KVC2QVJX6FVHMW46")
+# core.retry_parsing_error_indexation
+# core.count_back_tasks
+# core.get_doc_back_tasks("Sharepoint::012KVC2QVJX6FVHMW46")
+
 
 ## Call the audit methods, some examples
 ## First initialize with api_handler and credentials
@@ -77,22 +77,20 @@ end
 
 # Example of calling Search methods
 # search = SdkRuby::Search.new(api_handler)
-## Then call the methods
-## Perform a search
-# search.query("UPS", "user123", false, true, false)
-## Identify a specific document from a conversation
-# conversation = [{ "from" => "user", "message" => "how many tires tires were produced in 2018 ?"}]
-# search.identify_specific_document(conversation)
+# Then call the methods
+# Perform a search
+# p search.query("Qu'est ce que l'odorisation des gaz ?","Test direct from API - Nicolas Chevalet")
 ## Count the queries made
-# search.count_done_requests
+# p search.count_done_requests
 ## Count the queries made per day for a given period
-# search.count_done_requests_by_date("2025-03-02","2025-04-22")
+# p search.count_done_requests_by_date(begin_date = "2025-06-02", end_date = "2025-09-22")
+
 ## Count the queries made that had responses
-# search.count_answered_done_requests
+# p search.count_answered_done_requests
 ## Count the queries made per day for a given period
-# search.count_answered_done_requests_by_date("2025-05-02","2025-06-04")
+# p search.count_answered_done_requests_by_date("2025-07-02","2025-09-04")
 ## Get the most recent queries
-# search.get_requests_to_api(3, 0)
+# p search.get_requests_to_api(3, 0)
 
 # Methods related to the Chatbot methods
 # chatbot = SdkRuby::Chatbot.new(api_handler)

@@ -6,12 +6,12 @@ module SdkRuby
             @api_handler = api_handler
         end
 
-        def message(user_message, user_id, multi_documents, conversation_id)
+        def message(user_message, user_id, conversation_id)
             p "Launch message..."
-            response = httpx_post("/api/chatbot/message", {
+            response = httpx_post("/api/conversation/message", {
                 "user_message" => user_message,
                 "user_id" => user_id,
-                "multiDocuments" => multi_documents,
+                # "multiDocuments" => multi_documents,
                 "id" => conversation_id
             })
             handle_response(response)
@@ -22,7 +22,7 @@ module SdkRuby
 
         def get_conversation(conversation_id)
             p "Launch get_conversation..."
-            response = httpx_post("/api/chatbot/get-conversation", { "id" => conversation_id } )
+            response = httpx_post("/api/conversation/get-conversation", { "id" => conversation_id } )
             handle_response(response)
         rescue => e
             puts "An error has occurred while processing your query: #{e.message}"

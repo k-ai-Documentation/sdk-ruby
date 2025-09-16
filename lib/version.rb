@@ -1,3 +1,3 @@
 module SdkRuby
-  VERSION = "2.1.20250605"
+  VERSION = "2.2.20250916"
 end

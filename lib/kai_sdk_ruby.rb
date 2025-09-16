@@ -2,6 +2,7 @@ require_relative "version"
 require_relative "ks_credentials"
 require_relative "api_handler"
 require_relative 'core'
+require_relative 'document'
 require_relative 'audit'
 require_relative 'search'
 require_relative 'chatbot'

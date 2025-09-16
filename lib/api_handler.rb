@@ -15,8 +15,22 @@ module SdkRuby
       handle_response(response)
     end
 
-    def post(endpoint, body)
-      response = self.class.post("#{@base_url}#{endpoint}", body: body.to_json, headers: @headers)
+    # def post(endpoint, body)
+    #   response = self.class.post("#{@base_url}#{endpoint}", body: body.to_json, headers: @headers)
+    #   handle_response(response)
+    # end
+
+    def post(endpoint, body = {}, as: :json)
+      options = { headers: @headers }
+
+      if as == :json
+        options[:body] = body.to_json
+        options[:headers] = options[:headers].merge("Content-Type" => "application/json")
+      else
+        options[:body] = body
+      end
+
+      response = self.class.post("#{@base_url}#{endpoint}", options)
       handle_response(response)
     end
 
@@ -30,8 +44,9 @@ module SdkRuby
     private
 
     def build_headers
-      headers = { 'api-key' => @credentials.api_key }
-
+      headers = { 
+        'api-key' => @credentials.api_key
+      }
       if @credentials.organization_id
         headers['organization-id'] = @credentials.organization_id
       end

@@ -7,26 +7,21 @@ module SdkRuby
         end
 
         # Perform a search query
-        def query(query, user, impersonate, multi_documents, need_following_questions)
-            p "Launch search query..."
-            response = httpx_post("/api/search/query", {
-                "query" => query,
-                "user" => user,
-                "impersonate" => impersonate,
-                "multiDocuments" => multi_documents,
-                "needFollowingQuestions" => need_following_questions
+        def query(query, user)
+        p "Launch search query..."
+            @api_handler.post("/api/search/query", {
+                query: query,
+                user: user
             })
-            handle_response(response)
         rescue => e
-            puts "An error has occurred while processing your query: #{e.message}"
-            nil
+        puts "An error has occurred while processing your query: #{e.message}"
+        nil
         end
 
         # Count the requests made
         def count_done_requests
             p "Launch count_done_requests..."
-            response = httpx_post("/api/search/stats/count-search", {})
-            handle_response(response)
+            @api_handler.post("/api/search/stats/count-search", {})
         rescue => e
             puts "An error has occurred while processing your query: #{e.message}"
             nil
@@ -35,8 +30,7 @@ module SdkRuby
         # Count the requests made
         def count_done_requests_by_date(begin_date, end_date)
             p "Launch historic count_done_requests..."
-            response = httpx_post("/api/search/count-search-by-date",{ "beginDate": begin_date, "endDate": end_date })
-            handle_response(response)
+            @api_handler.post("/api/search/stats/count-search-by-date",{ begin_date: begin_date, end_date: end_date })
         rescue => e
             puts "An error has occurred while processing your query: #{e.message}"
             nil
@@ -45,8 +39,7 @@ module SdkRuby
         # Count answered queries
         def count_answered_done_requests
             p "Launch count_answered_done_requests..."
-            response = httpx_post("/api/search/stats/count-answered-search", {})
-            handle_response(response)
+            @api_handler.post("/api/search/stats/count-answered-search", {})
         rescue => e
             puts "An error has occurred while processing your query: #{e.message}"
             nil
@@ -55,8 +48,7 @@ module SdkRuby
         # Count the answered queries by date 
         def count_answered_done_requests_by_date(begin_date, end_date)
             p "Launch historic answered done requests count..."
-            response = httpx_post("/api/search/count-answered-search-by-date",{ "beginDate": begin_date, "endDate": end_date })
-            handle_response(response)
+            @api_handler.post("/api/search/stats/count-answered-search-by-date",{ begin_date: begin_date, end_date: end_date })
         rescue => e
             puts "An error has occurred while processing your query: #{e.message}"
             nil
@@ -65,22 +57,21 @@ module SdkRuby
         # Get API requests with a given limit and offset
         def get_requests_to_api(limit, offset)
             p "Launch get_requests_to_api..."
-            response = httpx_post("/api/search/stats/list-search", { "limit" => limit, "offset" => offset })
-            handle_response(response)
+            @api_handler.post("/api/search/stats/list-search", { "limit" => limit, "offset" => offset })
         rescue => e
             puts "An error has occurred while processing your query: #{e.message}"
             nil
         end
 
-        # Identify a specific document from a conversation
-        def identify_specific_document(conversation)
-            p "Launch identify_specific_document..."
-            response = httpx_post("/api/search/identify-specific-document", { "conversation" => conversation })
-            handle_response(response)
-        rescue => e
-            puts "An error has occurred while processing your query: #{e.message}"
-            nil
-        end
+        # # Identify a specific document from a conversation
+        # def identify_specific_document(conversation)
+        #     p "Launch identify_specific_document..."
+        #     response = httpx_post("/api/search/identify-specific-document", { "conversation" => conversation })
+        #     handle_response(response)
+        # rescue => e
+        #     puts "An error has occurred while processing your query: #{e.message}"
+        #     nil
+        # end
 
 
         private

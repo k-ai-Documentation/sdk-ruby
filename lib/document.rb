@@ -2,109 +2,98 @@ require 'httpx'
 # require 'async'
 
 module SdkRuby
-    class Core
+    class Document
         def initialize(api_handler)
             @api_handler = api_handler
         end
-
-        def differential_indexation
-            p "Launching differential indexation..."
-            response = httpx_post("/api/orchestrator/differential-indexation")
+        
+        # Get documents list
+        def list_docs(limit = 50, offset = 0, state = "")
+            p "List all documents..."
+            response = httpx_post("/api/document/list-docs", { limit: limit, offset: offset, state: state })
             handle_response(response)
         rescue => e
             puts "An error has occurred while processing your query: #{e.message}"
             nil
         end
 
-        # Getting a document's reindexing
-        def reindex_document(doc_id)
-            p "Launch doc reindexing..."
-            response = httpx_post("/api/orchestrator/reindex-document", { id: doc_id } )
+        # Getting a document's information
+        def get_doc_information(doc_id)
+            p "Launch get doc information..."
+            response = httpx_post("/api/document/doc", { id: doc_id } )
             handle_response(response)
         rescue => e
             puts "An error has occurred while processing your query: #{e.message}"
             nil
         end
 
-
-
-        def retry_parsing_error_indexation
-            p "Launching indexation of documents with parsing error..."
-            response = httpx_post("/api/orchestrator/retry-documents-parsing-error")
+        def download_file(file_id)
+            p "Launching file download..."
+            response = httpx_post("/api/document/download", { id: file_id })
             handle_response(response)
         rescue => e
             puts "An error has occurred while processing your query: #{e.message}"
             nil
         end
 
-        def count_back_tasks
-            p "Count back tasks..."
-            response = httpx_post("/api/orchestrator/count-back-tasks")
+        # Get documents by IDs
+        def get_doc_by_ids(doc_ids)
+            p "Launch get_doc_by_ids..."
+            response = httpx_post("/api/document/docs-by-ids", { "ids": doc_ids })
             handle_response(response)
         rescue => e
             puts "An error has occurred while processing your query: #{e.message}"
             nil
         end
 
-        # Getting a document's tasks
-        def get_doc_back_tasks(doc_id)
-            p "Launch get_doc_back_tasks..."
-            response = httpx_post("/api/orchestrator/count-tasks-for-doc", { id: doc_id } )
+        def count_documents_by_state(state = "")
+            p "Launch count documents by state..."
+            response = httpx_post("/api/document/count-documents", { state: state } )
             handle_response(response)
         rescue => e
             puts "An error has occurred while processing your query: #{e.message}"
             nil
         end
 
-        # def last_indexation
-        #     p "Get last indexation launch..."
-        #     response = httpx_post("/api/orchestrator/last-indexation")
+        # def count_documents
+        #     p "Launch count documents..."
+        #     response = httpx_post("/api/orchestrator/stats/count-documents")
         #     handle_response(response)
         # rescue => e
         #     puts "An error has occurred while processing your query: #{e.message}"
         #     nil
         # end
 
-        # def last_finished_indexation
-        #     p "Get last finished indexation ..."
-        #     response = httpx_post("/api/orchestrator/last-finished-indexation")
+        # def count_indexable_documents
+        #     p "Launch count indexable documents..."
+        #     response = httpx_post("/api/orchestrator/stats/count-indexable-documents")
         #     handle_response(response)
         # rescue => e
         #     puts "An error has occurred while processing your query: #{e.message}"
         #     nil
         # end
 
-        def check_pending_job
-            p "Check pending jobs ..."
-            response = httpx_post("/api/orchestrator/check-pending-job")
-            handle_response(response)
-        rescue => e
-            puts "An error has occurred while processing your query: #{e.message}"
-            nil
-        end
-
-        # def global_health
-        #     p "Launching global server running stats..."
-        #     response = httpx_post("/global-health")
+        # def count_indexed_documents
+        #     p "Launch count indexed documents..."
+        #     response = httpx_post("/api/orchestrator/stats/count-indexed-documents")
         #     handle_response(response)
         # rescue => e
         #     puts "An error has occurred while processing your query: #{e.message}"
         #     nil
         # end
 
-        # def health
-        #     p "Launching running status of the instance and api..."
-        #     response = httpx_post("/health")
+        # def count_detected_documents
+        #     p "Launch count detected documents..."
+        #     response = httpx_post("/api/orchestrator/stats/count-detected-documents")
         #     handle_response(response)
         # rescue => e
         #     puts "An error has occurred while processing your query: #{e.message}"
         #     nil
         # end
 
-        # # Obtenir la version de l'API
-        # def version
-        #     p "Get version of service kai-api..."
-        #     response = httpx_post("/version", {})
+        # def count_in_progress_documents
+        #     p "Launch count documents with pending indexation..."
+        #     response = httpx_post("/api/orchestrator/stats/count-inprogress-indexation-documents")
         #     handle_response(response)
         # rescue => e
         #     puts "An error has occurred while processing your query: #{e.message}"
